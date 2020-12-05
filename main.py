@@ -22,8 +22,8 @@ true_percentage = 0.05
 data = []
 real_data = []
 
-x = np.random.normal(1, 2, 5000)
-y = np.random.normal(-1, 3, 2000)
+x = np.array(create_hist(100))
+y = np.array(create_hist(250))
 
 plt.hist([x, y])
 plt.show()
