@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 
 
 def create_hist(n):
-    for j in range(n):
-        for i in range(1000):
+    real_data = []
+    for j in range(200):
+        data = []
+        for i in range(n):
             generate_percentage = random()
             if generate_percentage <= true_percentage:
                 data.append(True)
@@ -19,12 +21,13 @@ def create_hist(n):
 
 true_percentage = 0.05
 
-data = []
-real_data = []
 
 x = np.array(create_hist(100))
-y = np.array(create_hist(250))
+y = np.array(create_hist(100))
 
-plt.hist([x, y])
+print(x)
+print(y)
+
+plt.hist([x, y], color=['r', 'g'])
 plt.show()
 
