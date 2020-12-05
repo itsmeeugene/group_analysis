@@ -20,14 +20,13 @@ def create_hist(n):
 
 
 true_percentage = 0.05
-
+selec1, selec2, selec3 = 100, 1000, 100000
 
 x = np.array(create_hist(100))
-y = np.array(create_hist(100))
+y = np.array(create_hist(1000))
+z = np.array(create_hist(10000))
+plt.hist([x, y, z], color=['r', 'g', 'b'], label=[selec1, selec2, selec3])
+plt.legend(loc='upper right')
 
-print(x)
-print(y)
-
-plt.hist([x, y], color=['r', 'g'])
 plt.show()
 
