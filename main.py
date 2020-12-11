@@ -4,29 +4,32 @@ import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 
 
-def create_hist(n):
+def create_disp(real_data):
+    data = real_data[:]
+    true_percentage = sum(data) / len(data)
+    for i in range(len(data)):
+        data[i] = (data[i] - true_percentage) ** 2
+    return sum(data) / len(data)
+
+
+def create_hist(experiments, people):
     real_data = []
-    for j in range(200):
+    for j in range(experiments):
         data = []
-        for i in range(n):
+        for i in range(people):
             generate_percentage = random()
-            if generate_percentage <= true_percentage:
+            if generate_percentage <= very_true_percentage:
                 data.append(True)
             else:
                 data.append(False)
         real_percentage = sum(data) / len(data)
         real_data.append(real_percentage)
-    return real_data
+    dispersion = create_disp(real_data)
+    return real_data, dispersion
 
 
-true_percentage = 0.05
-selec1, selec2, selec3 = 100, 1000, 100000
 
-x = np.array(create_hist(100))
-y = np.array(create_hist(1000))
-z = np.array(create_hist(10000))
-plt.hist([x, y, z], color=['r', 'g', 'b'], label=[selec1, selec2, selec3])
-plt.legend(loc='upper right')
+very_true_percentage = 0.05
+hist, disp = create_hist(200, 100)
 
-plt.show()
 
