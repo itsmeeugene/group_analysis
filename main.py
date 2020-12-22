@@ -50,15 +50,24 @@ very_true_percentage = 0.05
 # plt.plot(x, y, color='r')
 # plt.plot(selections, disp_list, color='b')
 
-real_data, sigma = create_hist(1000)
+
+real_data, sigma = create_hist(200)
 mu = sum(real_data) / len(real_data)
-plt.hist(real_data)
+# plt.hist(real_data, density=True, bins=25)
 
-y = [exp((-1 * (i - mu) ** 2) / (2 * sigma)) / sqrt(2 * pi * sigma) for i in np.linspace(0, 0.1)]
-x = [i for i in np.linspace(0, 0.1)]
-plt.plot(x, y)
+summ = 0
+step = 1/12
+i = very_true_percentage
+# y = [exp((-1 * (i - mu) ** 2) / (2 * sigma)) / sqrt(2 * pi * sigma) for i in np.linspace(0, 0.1)]
+# x = [i for i in np.linspace(0, 0.1)]
+# plt.plot(x, y)
+while summ <= 0.475:
+    y1 = exp((-1 * (i - mu) ** 2) / (2 * sigma)) / sqrt(2 * pi * sigma)
+    y2 = exp((-1 * (i + step - mu) ** 2) / (2 * sigma)) / sqrt(2 * pi * sigma)
+    summ += step * (y1 + y2) / 2
+    i += step
+print(i)
 
-
-plt.show()
+# plt.show()
 
 
